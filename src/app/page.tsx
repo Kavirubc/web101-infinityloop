@@ -8,7 +8,7 @@ export default function Home() {
         Hey there,
       </h1>
       <p>
-        I'm Kaviru and you can find this repo on my <Link className="text-indigo-400 underline" href="https://github.com/Kavirubc" target="_blank">Github</Link>. Feel free to follow me as well.
+        I&apos;m Kaviru and you can find this repo on my <Link className="text-indigo-400 underline" href="https://github.com/Kavirubc" target="_blank">Github</Link>. Feel free to follow me as well.
       </p>
       <div className="mb-10 md:mb-5">
         <h2 className="text-xl mt-10  font-bold  text-black">
@@ -21,9 +21,9 @@ export default function Home() {
       <p>
         First you need to install <span className="bg-white text-black px-2"><strong>VS Code</strong></span>. You can use this <Link className="text-indigo-400 underline" href="https://code.visualstudio.com/download" target="_blank">link</Link>  to download it.
       </p>
-      <p>Then you need to install the extention <span className="bg-white text-black px-2 "><strong>Live Server</strong></span>  from VS code extention packs. And here's a <Link className="text-indigo-400 underline" href="https://www.youtube.com/watch?v=9kEOkw_LvGU" target="_blank">video</Link>  that shows how to do that.</p>
+      <p>Then you need to install the extention <span className="bg-white text-black px-2 "><strong>Live Server</strong></span>  from VS code extention packs. And here&apos;s a <Link className="text-indigo-400 underline" href="https://www.youtube.com/watch?v=9kEOkw_LvGU" target="_blank">video</Link>  that shows how to do that.</p>
       <p>
-        Other than that I'll post the repo link for the session before the session starts.
+        Other than that I&apos;ll post the repo link for the session before the session starts.
       </p>
       <div className="flex flex-row gap-x-4">
         <div>
@@ -43,7 +43,7 @@ export default function Home() {
         <sup>*</sup>Slides will be avaiable after the session.
       </p>
       <p>
-        If you are interested here's my  <Link className="text-indigo-400 underline" href="https://kh.ko-de.org/" target="_blank">portfolio</Link>.
+        If you are interested here&apos;s my  <Link className="text-indigo-400 underline" href="https://kh.ko-de.org/" target="_blank">portfolio</Link>.
       </p>
     </main>
   );
