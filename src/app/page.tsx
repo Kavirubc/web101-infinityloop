@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MoveRight } from 'lucide-react';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-left gap-y-5 px-10 py-20 md:p-24 text-white">
+    <main className="flex min-h-screen flex-col items-left gap-y-5 px-10 py-20 md:p-24 text-white max-w-2xl">
       <h1 className="text-2xl font-bold">
         Hey there,
       </h1>
@@ -27,15 +28,16 @@ export default function Home() {
       </p>
       <div className="flex flex-row gap-x-4">
         <div>
-          <button className="px-4 py-2 border border-white hover:bg-indigo-600 ">
+          <button className="px-4 py-1 border border-white hover:bg-indigo-600 ">
             <Link href="#">Repo Link</Link>
           </button>
         </div>
         <div>
-          <button className="px-4 py-2 border border-white hover:bg-orange-600 ">
+          <button className="px-4 py-1 border border-white hover:bg-orange-600 ">
             <Link href="#">Slides</Link>
           </button>
         </div>
+       
        
 
       </div>
@@ -45,6 +47,21 @@ export default function Home() {
       <p>
         If you are interested here&apos;s my  <Link className="text-indigo-400 underline" href="https://kh.ko-de.org/" target="_blank">portfolio</Link>.
       </p>
+      <div className="border p-5 border-white/50">
+        <form className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2 items-left">
+            <label htmlFor="email" className="text-white text-lg font-bold">Join us</label>
+            <input type="text" name="name" id="name" placeholder="Enter your first name" className="border text-white border-white bg-transparent p-1" />
+          </div>
+          <div>
+            <button className="px-4 py-1 border border-white hover:bg-orange-600 ">
+              <Link href="#"><span className="flex flex-row gap-2">Join community <MoveRight /></span></Link>
+            </button>
+          </div>
+          
+        </form>
+        
+      </div>
     </main>
   );
 }
