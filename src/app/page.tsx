@@ -1,12 +1,22 @@
 'use client';
 import { useState } from 'react';
-import Image from "next/image";
 import Link from "next/link";
 import { MoveRight } from 'lucide-react';
 import { createUser } from "./api/action";
 import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
+  // create a push for the param.name
+  function push(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    router.push(`/${formData.name}`);
+    setFormData({ name: '', email: '' });
+  }
+
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '' });
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -30,7 +40,7 @@ export default function Home() {
         showConfirmButton: false,
         timer: 1500
       });
-      setFormData({ name: '', email: '' });
+      setSubmitted(true);
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -61,12 +71,12 @@ export default function Home() {
       <div className="flex flex-row gap-x-4">
         <div>
           <button className="px-4 py-1 border border-white hover:bg-indigo-600">
-            <Link href="#">Repo Link</Link>
+            <Link target='_blank' href="https://github.com/Kavirubc/intro-to-web">Repo Link</Link>
           </button>
         </div>
         <div>
           <button className="px-4 py-1 border border-white hover:bg-orange-600">
-            <Link href="#">Slides</Link>
+            <Link target='_blank' href="#">Slides</Link>
           </button>
         </div>
       </div>
@@ -77,38 +87,48 @@ export default function Home() {
         If you are interested here&apos;s my <Link className="text-indigo-400 underline" href="https://kh.ko-de.org/" target="_blank">portfolio</Link>.
       </p>
       <div className="border p-5 border-white/50">
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-3 items-left">
-            <label htmlFor="name" className="text-white text-lg font-bold">Join us</label>
-            <input
-              required
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Enter your first name"
-              className="border text-white border-white bg-transparent p-1"
-              value={formData.name}
-              onChange={handleInputChange}
-              aria-label="Enter your first name"
-            />
-            <input
-              required
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              className="border text-white border-white bg-transparent p-1"
-              value={formData.email}
-              onChange={handleInputChange}
-              aria-label="Enter your email"
-            />
-          </div>
-          <div>
-            <button type="submit" className="px-4 py-1 border border-white hover:bg-orange-600">
-              <span className="flex flex-row gap-2">Join community <MoveRight /></span>
+        {submitted ? (
+          <div className='flex flex-col gap-3'>
+            <h2 className="text-xl font-bold">Thank you for joining the community!</h2>
+            <p className="text-sm text-slate-400">You will receive an email within next 2 weeks with the next steps.</p>
+            <button onClick={push} className="px-4 py-1 border border-white hover:bg-white hover:text-black">
+              <span className="flex flex-row gap-2">Continue to community page<MoveRight /></span>
             </button>
           </div>
-        </form>
+        ) : (
+          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-3 items-left">
+              <label htmlFor="name" className="text-white text-lg font-bold">Join us</label>
+              <input
+                required
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your first name"
+                className="border text-white border-white bg-transparent p-1"
+                value={formData.name}
+                onChange={handleInputChange}
+                aria-label="Enter your first name"
+              />
+              <input
+                required
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                className="border text-white border-white bg-transparent p-1"
+                value={formData.email}
+                onChange={handleInputChange}
+                aria-label="Enter your email"
+              />
+            </div>
+            <div>
+              <button type="submit" className="px-4 py-1 border border-white hover:bg-orange-600">
+                <span className="flex flex-row gap-2">Join community <MoveRight /></span>
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </main>
   );
