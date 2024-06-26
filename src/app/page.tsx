@@ -1,11 +1,16 @@
 'use client';
-import { useState } from 'react';
-import Image from "next/image";
+
+import { use, useState } from 'react';
 import Link from "next/link";
 import { MoveRight } from 'lucide-react';
 import { createUser } from "./api/action";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const Router = useRouter();
+
+
+
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [feedback, setFeedback] = useState({ message: '', type: '' });
 
@@ -23,6 +28,9 @@ export default function Home() {
     } catch (error) {
       setFeedback({ message: 'Error: User already exists or server error.', type: 'error' });
     }
+    Router.push(formData.name);
+
+
   }
 
   return (
