@@ -73,4 +73,11 @@ export async function createUser(userData: any) {
     }
 }
 
+//get request
+
+export async function getDelegates() {
+    const db = await getDbConnection();
+    return db.collection('web101').find().toArray();
+}
+
 initializeDb();
