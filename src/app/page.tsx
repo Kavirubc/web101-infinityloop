@@ -1,18 +1,13 @@
 'use client';
-
-import { use, useState } from 'react';
+import { useState } from 'react';
+import Image from "next/image";
 import Link from "next/link";
 import { MoveRight } from 'lucide-react';
 import { createUser } from "./api/action";
-import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 
 export default function Home() {
-  const Router = useRouter();
-
-
-
   const [formData, setFormData] = useState({ name: '', email: '' });
-  const [feedback, setFeedback] = useState({ message: '', type: '' });
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -21,16 +16,28 @@ export default function Home() {
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    Swal.fire({
+      title: 'Submitting...',
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
     try {
       await createUser(formData);
-      setFeedback({ message: 'Successfully joined the community!', type: 'success' });
+      Swal.fire({
+        icon: 'success',
+        title: 'Successfully joined the community!',
+        showConfirmButton: false,
+        timer: 1500
+      });
       setFormData({ name: '', email: '' });
     } catch (error) {
-      setFeedback({ message: 'Error: User already exists or server error.', type: 'error' });
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'User already exists or server error.',
+      });
     }
-    Router.push(formData.name);
-
-
   }
 
   return (
@@ -101,11 +108,6 @@ export default function Home() {
               <span className="flex flex-row gap-2">Join community <MoveRight /></span>
             </button>
           </div>
-          {feedback.message && (
-            <p className={`mt-4 ${feedback.type === 'error' ? 'text-red-500' : 'text-green-500'}`}>
-              {feedback.message}
-            </p>
-          )}
         </form>
       </div>
     </main>
