@@ -23,7 +23,7 @@ export async function sendMail(formData:any) {
         to: email,
         subject: 'WEB 101 | Welcome to the community!',
         html: `
-           <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -53,6 +53,7 @@ export async function sendMail(formData:any) {
         }
 
         p {
+            font-size: 16px;
             margin: 0 0 10px;
         }
 
@@ -67,12 +68,13 @@ export async function sendMail(formData:any) {
         }
 
         .button:hover {
+            color: #ffffff;
             background-color: #0056b3;
         }
 
         .footer {
             margin-top: 20px;
-            color: #777777;
+            color: #636363;
             font-size: 0.9em;
         }
     </style>
@@ -83,7 +85,7 @@ export async function sendMail(formData:any) {
         <h1>Hello ${name},</h1>
         <p>Thank you for joining our community. We are excited to have you with us.</p>
         <p>If you have any questions or need any assistance, feel free to reach out.</p>
-        <a target="_blank" href="https://kh.ko-de.org/" class="button">Visit My Portfolio</a>
+        <a target="_blank" href="https://kh.ko-de.org" class="button">Visit My Portfolio</a>
         <div class="footer">
             <p>Best Regards,</p>
             <p>Kaviru H.</p>
