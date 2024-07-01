@@ -61,15 +61,17 @@ export async function sendMail(formData:any) {
             display: inline-block;
             padding: 6px 20px;
             margin-top: 20px;
-            background-color: #be27ff;
-            color: #ffffff;
+            border: 1px solid #474747;
+            border-radius: 2px;
+
+            color: #3a3a3a;
             text-decoration: none;
             border-radius: 5px;
         }
 
         .button:hover {
             color: #ffffff;
-            background-color: #0056b3;
+            background-color: #8851ff;
         }
 
         .footer {
