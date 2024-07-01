@@ -5,6 +5,7 @@ import { MoveRight } from 'lucide-react';
 import { createUser } from "./api/action";
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
+import { sendMail } from "./api/mail";
 
 export default function Home() {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function Home() {
       }
     });
     try {
+      
       await createUser(formData);
       Swal.fire({
         icon: 'success',
@@ -40,7 +42,9 @@ export default function Home() {
         showConfirmButton: false,
         timer: 1500
       });
+
       setSubmitted(true);
+      sendMail(formData);
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -68,7 +72,7 @@ export default function Home() {
         Then you need to install the extension <span className="bg-white text-black px-2"><strong>Live Server</strong></span> from VS Code extension packs. And here&apos;s a <Link className="text-indigo-400 underline" href="https://www.youtube.com/watch?v=9kEOkw_LvGU" target="_blank">video</Link> that shows how to do that.
       </p>
       <p>Other than that I&apos;ll post the repo link for the session before the session starts.</p>
-      <div className="flex flex-row gap-x-4">
+      <div className="flex flex-col gap-y-2 md:flex-row gap-x-4">
         <div>
           <button className="px-4 py-1 border border-white hover:bg-indigo-600">
             <Link target='_blank' href="https://github.com/Kavirubc/intro-to-web">Repo Link</Link>
@@ -76,12 +80,17 @@ export default function Home() {
         </div>
         <div>
           <button className="px-4 py-1 border border-white hover:bg-orange-600">
-            <Link target='_blank' href="#">Slides</Link>
+            <Link target='_blank' href="https://www.canva.com/design/DAGIoaUn4CA/2MkIJzkRTEV_YkFaI_mudQ/edit?utm_content=DAGIoaUn4CA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Slides</Link>
+          </button>
+        </div>
+        <div>
+          <button className="px-4 py-1 border border-white hover:bg-orange-600">
+            <Link target='_blank' href="https://forms.gle/ZqiHGwLbUTrkUBiVA">Submission link</Link>
           </button>
         </div>
       </div>
       <p className="text-sm text-slate-400 hover:text-slate-100">
-        <sup>*</sup>Slides will be available after the session.
+        <sup>*</sup>Slides are available now.
       </p>
       <p>
         If you are interested here&apos;s my <Link className="text-indigo-400 underline" href="https://kh.ko-de.org/" target="_blank">portfolio</Link>.
