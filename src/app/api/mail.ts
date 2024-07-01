@@ -83,7 +83,7 @@ export async function sendMail(formData:any) {
         <h1>Hello ${name},</h1>
         <p>Thank you for joining our community. We are excited to have you with us.</p>
         <p>If you have any questions or need any assistance, feel free to reach out.</p>
-        <a href="http://yourportfolio.com" class="button">Visit My Portfolio</a>
+        <a target="_blank" href="https://kh.ko-de.org/" class="button">Visit My Portfolio</a>
         <div class="footer">
             <p>Best Regards,</p>
             <p>Kaviru H.</p>
