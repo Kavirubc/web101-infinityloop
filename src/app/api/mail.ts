@@ -59,19 +59,19 @@ export async function sendMail(formData:any) {
 
         .button {
             display: inline-block;
-            padding: 6px 20px;
+            padding: 5px 12px;
             margin-top: 20px;
             border: 1px solid #474747;
             border-radius: 2px;
-
+            font-size: 16px;
             color: #3a3a3a;
             text-decoration: none;
             border-radius: 5px;
         }
 
         .button:hover {
-            color: #ffffff;
-            background-color: #8851ff;
+            color: #000000;
+            background-color: #cbb3ff;
         }
 
         .footer {
@@ -79,15 +79,23 @@ export async function sendMail(formData:any) {
             color: #636363;
             font-size: 0.9em;
         }
+        .highlight {
+            background-color: #bdfbff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Hello ${name},</h1>
+        <div class="highlight">
+            <h1>Hello ${name},</h1>
+        </div>
         <p>Thank you for joining our community. We are excited to have you with us.</p>
         <p>If you have any questions or need any assistance, feel free to reach out.</p>
-        <a target="_blank" href="https://kh.ko-de.org" class="button">Visit My Portfolio</a>
+        <a target="_blank" href="https://web101.kh.ko-de.org/community" class="button">Continue to Community</a>
         <div class="footer">
             <p>Best Regards,</p>
             <p>Kaviru H.</p>

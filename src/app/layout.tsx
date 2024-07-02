@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import logo from "@/../public/logok.png";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +27,12 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={logo.src} />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ClerkProvider>
+          
+        {children}
+        </ClerkProvider>
+        </body>
     </html>
   );
 }
